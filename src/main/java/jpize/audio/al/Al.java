@@ -10,28 +10,12 @@ import jpize.util.Utils;
 import org.lwjgl.openal.*;
 import org.lwjgl.system.MemoryUtil;
 
-import java.nio.ByteBuffer;
-
 import static org.lwjgl.openal.AL11.*;
 
 public class Al {
 
     public static int NONE = AL_NONE;
 
-    // alGetDouble(int paramName)
-    // alGetDoublev(int paramName, double[] dest)
-    // alGetDoublev(int paramName, DoubleBuffer dest)
-    // alGetFloat(int paramName)
-    // alGetFloatv(int paramName, float[] dest)
-    // alGetFloatv(int paramName, FloatBuffer dest)
-    // alGetInteger(int paramName)
-    // alGetIntegerv(int paramName, int[] dest)
-    // alGetIntegerv(int paramName, IntBuffer dest)
-    // alGetBoolean(int paramName)
-    // alGetBooleanv(int paramName, ByteBuffer dest)
-    // alGetEnumValue(CharSequence enumName)
-    // alGetEnumValue(ByteBuffer enumName)
-    // alGetString(int paramName)
 
     public static AlError getError() {
         return AlError.byValue(alGetError());

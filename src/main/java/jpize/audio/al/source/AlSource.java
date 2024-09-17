@@ -14,6 +14,7 @@ import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.util.Objects;
 
 import static org.lwjgl.openal.AL10.alGetSourcef;
 import static org.lwjgl.openal.AL11.*;
@@ -656,12 +657,12 @@ public class AlSource extends AlObjectInt {
 
 
     public AlSource playDelayedn(long nanos) {
-        final long startTime = (nanos + Audio.getCurrentDevice().getClock());
+        final long startTime = (nanos + Objects.requireNonNull(Audio.getCurrentDevice()).getClock());
         return playAtTime(startTime);
     }
 
     public static void playDelayedn(long nanos, int... sources) {
-        final long startTime = (nanos + Audio.getCurrentDevice().getClock());
+        final long startTime = (nanos + Objects.requireNonNull(Audio.getCurrentDevice()).getClock());
         playAtTime(startTime, sources);
     }
 

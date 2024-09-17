@@ -1,6 +1,5 @@
 package jpize.audio.al;
 
-import jpize.audio.al.buffer.AlBuffer;
 import jpize.util.Disposable;
 
 public abstract class AlObjectInt implements Disposable {

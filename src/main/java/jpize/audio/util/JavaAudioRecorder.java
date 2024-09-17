@@ -1,4 +1,4 @@
-package jpize.audio.io;
+package jpize.audio.util;
 
 import jpize.util.Disposable;
 

@@ -1,7 +1,6 @@
 package jpize.audio.al.fx;
 
 import jpize.audio.al.AlObjectInt;
-import org.lwjgl.openal.SOFTEffectTarget;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;

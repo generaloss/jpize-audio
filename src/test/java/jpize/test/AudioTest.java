@@ -6,13 +6,7 @@ import jpize.audio.al.AlExtensions;
 import jpize.audio.al.Alc;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.device.AlcExtensions;
-import jpize.audio.al.fx.AlEffectSlot;
-import jpize.audio.al.fx.effects.AleAutowah;
-import jpize.audio.al.fx.effects.AleEcho;
-import jpize.audio.al.fx.effects.AleReverb;
 import jpize.audio.util.Music;
-import jpize.audio.util.Sound;
-import jpize.util.res.Resource;
 import jpize.util.time.Stopwatch;
 import jpize.util.time.TimeUtils;
 
