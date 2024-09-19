@@ -13,10 +13,8 @@ import jpize.util.time.TimeUtils;
 public class AudioTest {
 
     public static void main(String[] args) {
-        long pid = ProcessHandle.current().pid();
-
         Audio.init();
-        AlDevice device1 = Audio.openDevice();
+        final AlDevice device1 = Audio.openDevice();
 
         System.out.println("AL Extensions: (" + AlExtensions.all().split(" ").length + ") " + AlExtensions.all());
         System.out.println("AL Ext present: " + AlExtensions.SOFT_SOURCE_START_DELAY.isPresent());
@@ -25,10 +23,9 @@ public class AudioTest {
         System.out.println("Devices: " + Alc.getDeviceSpecifiers());
 
         System.out.println("Gain limit: " + Al.getGainLimit());
+        Al.checkError();
 
         Stopwatch s = new Stopwatch().start();
-
-        Al.checkError();
         final Music music = new Music("/music.ogg");
         System.out.println("Load time: " + s.getMillis() + "ms");
         music.play();
