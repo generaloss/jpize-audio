@@ -14,12 +14,13 @@ public class AlAudioStreamQueued extends AlAudioStream {
 
     @Override
     protected int read(byte[] buffer) {
-        final byte[] data = dataQueue.poll();
-        if(data == null)
+        final byte[] frame = dataQueue.poll();
+        if(frame == null)
             return 0;
 
-        System.arraycopy(data, 0, buffer, 0, Math.min(data.length, buffer.length));
-        return data.length;
+        final int length = Math.min(frame.length, buffer.length);
+        System.arraycopy(frame, 0, buffer, 0, length);
+        return length;
     }
 
     @Override
