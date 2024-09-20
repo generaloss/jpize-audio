@@ -8,20 +8,20 @@ import jpize.util.res.Resource;
 
 import java.nio.ByteBuffer;
 
-public class Sound extends AlSource {
+public class AlSound extends AlSource {
 
     private final AlBuffer buffer;
 
-    public Sound(Resource res) {
-        this.buffer = new AlBuffer(res);
+    public AlSound(Resource res) {
+        this.buffer = new AlBuffer().load(res);
         super.setBuffer(buffer);
     }
 
-    public Sound(String filepath) {
+    public AlSound(String filepath) {
         this(Resource.internal(filepath));
     }
 
-    public Sound(ByteBuffer data, AlFormat format, int frequency) {
+    public AlSound(ByteBuffer data, AlFormat format, int frequency) {
         this.buffer = new AlBuffer();
         try{
             buffer.data(data, format, frequency);
@@ -32,7 +32,7 @@ public class Sound extends AlSource {
         }
     }
 
-    public Sound(ByteBuffer data, int bits, int channels, int frequency) {
+    public AlSound(ByteBuffer data, int bits, int channels, int frequency) {
         this(data, AlFormat.by(channels, bits), frequency);
     }
 

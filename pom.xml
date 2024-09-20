@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.7.1.dev.5.1</version>
+    <version>24.7.1.dev.6.0</version>
     <name>jpize-audio</name>
 
     <description>Audio library</description>
@@ -115,49 +115,26 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Jpize Utils -->
+        <!-- jpize-utils -->
         <dependency>
             <groupId>io.github.generaloss</groupId>
             <artifactId>jpize-utils</artifactId>
-            <version>24.7.1.dev.5.1</version>
+            <version>24.7.1.dev.5.8</version>
         </dependency>
-        <!-- OpenAL -->
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl</artifactId>
-            <classifier>natives-linux</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl</artifactId>
-            <classifier>natives-windows</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-openal</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-openal</artifactId>
-            <classifier>natives-linux</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-openal</artifactId>
-            <classifier>natives-windows</classifier>
-        </dependency>
-        <!-- Jorbis (ogg format) -->
+        <!-- lwjgl-openal -->
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl</artifactId></dependency>
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl</artifactId><classifier>natives-linux</classifier></dependency>
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl</artifactId><classifier>natives-windows</classifier></dependency>
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl-openal</artifactId></dependency>
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl-openal</artifactId><classifier>natives-linux</classifier></dependency>
+        <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl-openal</artifactId><classifier>natives-windows</classifier></dependency>
+        <!-- jorbis -->
         <dependency>
             <groupId>org.jcraft</groupId>
             <artifactId>jorbis</artifactId>
             <version>0.0.17</version>
         </dependency>
-        <!-- JLayer (mp3 format) -->
+        <!-- jlayer -->
         <dependency>
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>

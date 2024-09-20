@@ -338,7 +338,7 @@ public class AlSource extends AlObjectInt {
     }
 
 
-    private AlSourceState getState() {
+    public AlSourceState getState() {
         return AlSourceState.byValue(alGetSourcei(ID, AL_SOURCE_STATE));
     }
 

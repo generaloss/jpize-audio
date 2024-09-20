@@ -1,15 +1,14 @@
 package jpize.audio.util;
 
-import jpize.audio.al.buffer.AlFormat;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class AlAudioStreamerQueued extends AlAudioStreamer {
+public class AlAudioStreamQueued extends AlAudioStream {
 
     private final Queue<byte[]> dataQueue;
 
-    public AlAudioStreamerQueued(AlFormat format, int sampleRate, int buffersNum, int bufferSize) {
-        super(format, sampleRate, buffersNum, bufferSize);
+    public AlAudioStreamQueued(int buffersNum, int bufferSize) {
+        super(buffersNum, bufferSize);
         this.dataQueue = new ConcurrentLinkedQueue<>();
     }
 
@@ -17,11 +16,14 @@ public class AlAudioStreamerQueued extends AlAudioStreamer {
     protected int read(byte[] buffer) {
         final byte[] data = dataQueue.poll();
         if(data == null)
-            return -1;
+            return 0;
 
         System.arraycopy(data, 0, buffer, 0, Math.min(data.length, buffer.length));
         return data.length;
     }
+
+    @Override
+    protected void reset() { }
 
     public Queue<byte[]> getDataQueue() {
         return dataQueue;

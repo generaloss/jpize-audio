@@ -25,8 +25,8 @@ public abstract class AudioInputStream extends AudioData implements Closeable {
     abstract public int read(byte[] buffer);
 
     public byte[] readFully() {
-        final ByteArrayOutputStream output = new ByteArrayOutputStream(2048);
-        final byte[] tempBuffer = new byte[2048];
+        final ByteArrayOutputStream output = new ByteArrayOutputStream(16384);
+        final byte[] tempBuffer = new byte[16384];
         while(!atEnd()){
             int length = this.read(tempBuffer);
             if(length == -1)

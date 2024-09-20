@@ -181,6 +181,10 @@ public enum AlFormat {
         return bits * channels;
     }
 
+    public int getSampleSizeInBytes() {
+        return this.getSampleSizeInBits() / 8;
+    }
+
 
     private static final Map<Integer, AlFormat> BY_VALUE = Utils.make(new HashMap<>(), map -> {
         for(AlFormat e: values())

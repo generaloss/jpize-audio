@@ -8,7 +8,10 @@ public class WavInputStream extends AudioInputStream {
 
     public WavInputStream(InputStream input) {
         super(input);
+        readHeader();
+    }
 
+    private void readHeader() {
         try{
             // Header
             if(in.read() != 'R' || in.read() != 'I' || in.read() != 'F' || in.read() != 'F')

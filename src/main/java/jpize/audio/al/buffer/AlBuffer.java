@@ -1,10 +1,12 @@
 package jpize.audio.al.buffer;
 
 import jpize.audio.al.AlObjectInt;
-import jpize.audio.io.SoundLoader;
+import jpize.audio.io.AudioInputStream;
 import jpize.util.res.Resource;
+import org.lwjgl.BufferUtils;
 import org.lwjgl.openal.*;
 
+import java.io.InputStream;
 import java.nio.*;
 
 import static org.lwjgl.openal.AL11.*;
@@ -19,13 +21,25 @@ public class AlBuffer extends AlObjectInt {
         this(alGenBuffers());
     }
 
-    public AlBuffer(Resource res) {
-        this();
-        SoundLoader.load(this, res);
+
+    public AlBuffer load(AudioInputStream input) {
+        final byte[] data = input.readFully();
+        final ByteBuffer buffer = BufferUtils.createByteBuffer(data.length);
+        buffer.put(data).flip();
+        this.data(buffer, input.getAlFormat(), input.getSampleRate());
+        return this;
     }
 
-    public AlBuffer(String filepath) {
-        this(Resource.internal(filepath));
+    public AlBuffer load(String format, InputStream stream) {
+        return this.load(AudioInputStream.createByFormat(format, stream));
+    }
+
+    public AlBuffer load(Resource res) {
+        return this.load(res.extension(), res.inStream());
+    }
+
+    public AlBuffer load(String path) {
+        return this.load(Resource.internal(path));
     }
 
 
