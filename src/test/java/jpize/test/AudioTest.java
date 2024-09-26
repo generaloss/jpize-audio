@@ -26,7 +26,7 @@ public class AudioTest {
         Al.checkError();
 
         Stopwatch s = new Stopwatch().start();
-        final AlMusic music = new AlMusic("/music-loop.mp3");
+        final AlMusic music = new AlMusic("/portal.ogg");
         System.out.println("Load time: " + s.getMillis() + "ms");
         music.setLooping(true);
         music.play();
@@ -38,11 +38,11 @@ public class AudioTest {
 
             if(s.getSeconds() > 4 && s.getSeconds() < 8 && !paused){
                 paused = true;
-                music.pause();
+                //music.pause();
                 System.out.println("--===PAUSE===--");
             }else if(s.getSeconds() > 8 && paused){
                 paused = false;
-                music.play();
+                //music.play();
                 System.out.println("--===RESUME===--");
             }
         }

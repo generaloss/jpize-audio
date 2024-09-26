@@ -5,7 +5,7 @@ import jpize.util.res.Resource;
 
 import java.util.function.Supplier;
 
-public class AlMusic extends AlAudioStream {
+public class AlMusic extends AlSpeakerStream {
 
     private final Supplier<AudioInputStream> inputSupplier;
     private AudioInputStream input;

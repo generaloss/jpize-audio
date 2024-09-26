@@ -56,11 +56,15 @@ public abstract class AudioInputStream extends AudioData implements Closeable {
         FACTORY_BY_FORMAT.put(format.toUpperCase(), factory);
     }
 
-    public static AudioInputStream createByFormat(String format, InputStream stream) {
-        final Factory factory = FACTORY_BY_FORMAT.get(format.toUpperCase());
-        if(factory == null)
+    public static Factory getFactory(String format) {
+        final String key = format.toUpperCase();
+        if(!FACTORY_BY_FORMAT.containsKey(key))
             throw new Error("Audio format '" + format.toUpperCase() + "' is not supported.");
-        return factory.create(stream);
+        return FACTORY_BY_FORMAT.get(key);
+    }
+
+    public static AudioInputStream createByFormat(String format, InputStream stream) {
+        return getFactory(format).create(stream);
     }
 
 }

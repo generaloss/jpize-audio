@@ -3,17 +3,15 @@ package jpize.audio.util;
 import jpize.audio.al.buffer.AlFormat;
 import jpize.audio.al.source.AlSource;
 import jpize.audio.al.source.AlSourceState;
-import jpize.util.array.IntList;
 import org.lwjgl.openal.AL11;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.ByteBuffer;
 
-public abstract class AlAudioStream extends AlSource {
+public abstract class AlSpeakerStream extends AlSource {
 
     private final int[] buffers;
-    private final IntList freeBuffers;
-    private int nextFreeBuffer;
+    private int bufferIndex;
 
     private final byte[] readBuffer;
     private AlSourceState state;
@@ -23,16 +21,15 @@ public abstract class AlAudioStream extends AlSource {
     private int sampleRate;
     private Runnable onComplete;
 
-    public AlAudioStream(int buffersNum, int bufferSize) {
+    public AlSpeakerStream(int buffersNum, int bufferSize) {
         this.buffers = new int[buffersNum];
         AL11.alGenBuffers(buffers);
-        this.freeBuffers = new IntList().add(buffers).trim();
 
         this.readBuffer = new byte[bufferSize];
         this.state = AlSourceState.INITIAL;
     }
 
-    public AlAudioStream setup(AlFormat format, int sampleRate) {
+    public AlSpeakerStream setup(AlFormat format, int sampleRate) {
         this.format = format;
         this.sampleRate = sampleRate;
         return this;
@@ -47,34 +44,32 @@ public abstract class AlAudioStream extends AlSource {
         return state;
     }
 
-    public AlAudioStream setOnComplete(Runnable onComplete) {
+    public AlSpeakerStream setOnComplete(Runnable onComplete) {
         this.onComplete = onComplete;
         return this;
     }
 
     @Override
-    public AlAudioStream play() {
+    public AlSpeakerStream play() {
         if(format == null)
             throw new IllegalStateException("First call setup(format, sampleRate).");
         if(this.isPlaying())
             return this;
 
-        this.queueFreeBuffers();
-        super.play();
-
+        if(super.getBuffersQueued() != 0) super.play(); // after pause
         state = AlSourceState.PLAYING;
         return this;
     }
 
     @Override
-    public AlAudioStream pause() {
+    public AlSpeakerStream pause() {
         super.pause();
         state = AlSourceState.PAUSED;
         return this;
     }
 
     @Override
-    public AlAudioStream stop() {
+    public AlSpeakerStream stop() {
         super.stop();
         state = AlSourceState.STOPPED;
         return this;
@@ -86,7 +81,7 @@ public abstract class AlAudioStream extends AlSource {
     }
 
     @Override
-    public AlAudioStream setLooping(boolean looping) {
+    public AlSpeakerStream setLooping(boolean looping) {
         this.looping = looping;
         return this;
     }
@@ -96,46 +91,32 @@ public abstract class AlAudioStream extends AlSource {
             return;
 
         this.unqueueProcessedBuffers();
-        final boolean filled = this.queueFreeBuffers();
-        if(filled && super.getState() != AlSourceState.PLAYING){
-            super.play();
-            System.out.println("play");
-        }
+        this.queueFreeBuffers();
     }
 
     private void unqueueProcessedBuffers() {
         int processed = super.getBuffersProcessed();
-        while(processed > 0){
-            processed--;
-            // unqueue buffer
-            final int bufferID = super.unqueueBuffers();
-            if(bufferID == 0)
-                continue;
-
-            freeBuffers.add(bufferID);
-            System.out.println("unqueue " + bufferID);
-        }
+        for(; processed > 0; processed--)
+            super.unqueueBuffers(); //!D System.out.println("unqueue #" + );
     }
 
     private boolean queueFreeBuffers() {
-        boolean filled = false;
-        while(freeBuffers.isNotEmpty()){
-            final int bufferID = buffers[nextFreeBuffer];
-            if(!freeBuffers.contains(bufferID))
-                break;
+        int count = (buffers.length - super.getBuffersQueued());
+        if(count < 1)
+            return false;
 
+        for(; count > 0; count--){
+            final int bufferID = buffers[bufferIndex];
             if(!fillAndQueue(bufferID))
-                break;
-
-            System.out.println("queue " + bufferID);
-            freeBuffers.removeFirst(bufferID);
-
-            nextFreeBuffer++;
-            nextFreeBuffer %= buffers.length;
-
-            filled = true;
+                return false;
+            //!D System.out.println("queue #" + bufferID);
+            bufferIndex = (bufferIndex + 1) % buffers.length;
         }
-        return filled;
+
+        if(super.getState() != AlSourceState.PLAYING)
+            super.play();
+
+        return true;
     }
 
     private boolean fillAndQueue(int bufferID) {

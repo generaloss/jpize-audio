@@ -3,11 +3,11 @@ package jpize.audio.util;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class AlAudioStreamQueued extends AlAudioStream {
+public class AlSpeakerQueued extends AlSpeakerStream {
 
     private final Queue<byte[]> dataQueue;
 
-    public AlAudioStreamQueued(int buffersNum, int bufferSize) {
+    public AlSpeakerQueued(int buffersNum, int bufferSize) {
         super(buffersNum, bufferSize);
         this.dataQueue = new ConcurrentLinkedQueue<>();
     }
