@@ -5,7 +5,6 @@ Allows loading audio files (ogg, mp3, wav) and playing them with OpenAL.
 
 Provides most OpenAL extensions.
 
-
 ---
 
 ## Getting Started
@@ -16,7 +15,7 @@ Provides most OpenAL extensions.
 <dependency>
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.7.1</version>
+    <version>24.9.1</version>
 </dependency>
 ```
 ### Gradle (Kotlin)
@@ -26,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.generaloss:jpize-audio:24.7.1")
+    implementation("io.github.generaloss:jpize-audio:24.9.1")
 }
 ```
 
@@ -52,10 +51,10 @@ Audio.dispose();
 ---
 
 ## Used libs:
-* *[LWJGL3](https://github.com/LWJGL/lwjgl3)*
-* *[Joribs](https://github.com/ymnk/jorbis)*
-* *[JLayer](https://github.com/umjammer/jlayer)*
-* *[Jpize-Utils](https://github.com/generaloss/jpize-utils)*
+* *[lwjgl3](https://github.com/LWJGL/lwjgl3)*
+* *[joribs](https://github.com/ymnk/jorbis)*
+* *[jlayer](https://github.com/umjammer/jlayer)*
+* *[jpize-utils](https://github.com/generaloss/jpize-utils)*
 
 ---
 

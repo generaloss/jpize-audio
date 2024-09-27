@@ -26,7 +26,7 @@ public class AudioTest {
         Al.checkError();
 
         Stopwatch s = new Stopwatch().start();
-        final AlMusic music = new AlMusic("/portal.ogg");
+        final AlMusic music = new AlMusic("/music-loop.ogg");
         System.out.println("Load time: " + s.getMillis() + "ms");
         music.setLooping(true);
         music.play();
