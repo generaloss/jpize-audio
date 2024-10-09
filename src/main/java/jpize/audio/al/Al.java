@@ -129,7 +129,6 @@ public class Al {
         SOFTEvents.alEventCallbackSOFT((int alEventType, int uint1, int uint2, int size, long charsPointer, long voidPointer) -> {
             final AlEventType type = AlEventType.byValue(alEventType);
             final String chars = MemoryUtil.memUTF8(charsPointer, size);
-            System.out.println(type + ":  " + uint1 + ", " + uint2 + "  <<" + chars + ">>");
 
             switch(type) {
                 case SOURCE_STATE_CHANGED -> {
