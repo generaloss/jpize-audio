@@ -2,8 +2,9 @@ package jpize.audio.util;
 
 import jpize.audio.al.buffer.AlBuffer;
 import jpize.audio.al.source.AlSource;
+import jpize.util.Disposable;
 
-public class AlSourcePool {
+public class AlSourcePool implements Disposable {
 
     private final AlSource[] sources;
 
@@ -13,7 +14,11 @@ public class AlSourcePool {
             sources[i] = new AlSource();
     }
 
-    private int findFreeIdx() {
+    public AlSource[] getSources() {
+        return sources;
+    }
+
+    private int findFreeSourceIndex() {
         int low = 0;
         int high = sources.length - 1;
         while(low <= high){
@@ -28,7 +33,7 @@ public class AlSourcePool {
     }
 
     public AlSource findFreeSource() {
-        final int index = findFreeIdx();
+        final int index = this.findFreeSourceIndex();
         if(index < 0 || index == sources.length)
             return null;
         return sources[index];
@@ -54,7 +59,8 @@ public class AlSourcePool {
         return play(buffer, 1D);
     }
 
-    public void delete() {
+    @Override
+    public void dispose() {
         for(AlSource source: sources){
             source.stop();
             source.dispose();
