@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.9.3-dev01u07</version>
+    <version>24.9.3-dev01u08</version>
     <name>jpize-audio</name>
 
     <description>audio library</description>

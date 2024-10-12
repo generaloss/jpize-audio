@@ -147,4 +147,11 @@ public abstract class AlSpeakerStream extends AlSource {
         return true;
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        for(int buffer: buffers)
+            AL11.alDeleteBuffers(buffer);
+    }
+
 }

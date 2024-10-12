@@ -3,12 +3,13 @@ package jpize.audio.util;
 import jpize.audio.al.buffer.AlFormat;
 import jpize.audio.al.source.AlSource;
 import jpize.audio.al.source.AlSourceState;
+import jpize.util.Disposable;
 import org.lwjgl.openal.AL11;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.ByteBuffer;
 
-public class AlSpeaker {
+public class AlSpeaker implements Disposable {
 
     private final AlSource source;
     private final int[] buffers;
@@ -71,6 +72,13 @@ public class AlSpeaker {
         if(source.getState() != AlSourceState.PLAYING)
             source.play();
         return true;
+    }
+
+    @Override
+    public void dispose() {
+        source.dispose();
+        for(int buffer: buffers)
+            AL11.alDeleteBuffers(buffer);
     }
 
 }
