@@ -7,7 +7,7 @@
     <version>24.9.3-dev01u10</version>
     <name>jpize-audio</name>
 
-    <description>audio library</description>
+    <description>openal audio library</description>
     <url>https://github.com/generaloss/jpize-engine</url>
 
     <scm>
