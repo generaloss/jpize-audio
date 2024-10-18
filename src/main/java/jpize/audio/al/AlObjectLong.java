@@ -19,4 +19,14 @@ public abstract class AlObjectLong implements Disposable {
         return Long.hashCode(ID);
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if(this == object)
+            return true;
+        if(object == null || getClass() != object.getClass())
+            return false;
+        AlObjectLong alObject = (AlObjectLong) object;
+        return ID == alObject.ID;
+    }
+
 }

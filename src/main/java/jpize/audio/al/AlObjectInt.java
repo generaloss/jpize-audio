@@ -19,6 +19,16 @@ public abstract class AlObjectInt implements Disposable {
         return ID;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if(this == object)
+            return true;
+        if(object == null || getClass() != object.getClass())
+            return false;
+        AlObjectInt alObject = (AlObjectInt) object;
+        return ID == alObject.ID;
+    }
+
 
     public static int[] makeArray(AlObjectInt... objects) {
         final int[] buffer = new int[objects.length];
