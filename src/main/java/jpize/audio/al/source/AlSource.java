@@ -45,7 +45,7 @@ public class AlSource extends AlObjectInt {
 
     public AlSource setBuffer(AlBuffer buffer) {
         if(buffer != null)
-            setBuffer(buffer.getID());
+            this.setBuffer(buffer.getID());
         return this;
     }
 
@@ -229,7 +229,7 @@ public class AlSource extends AlObjectInt {
 
 
     public Vec3f getPosition() {
-        return getVec3f(AL_POSITION);
+        return this.getVec3f(AL_POSITION);
     }
 
     public AlSource setPosition(float x, float y, float z) {
@@ -251,7 +251,7 @@ public class AlSource extends AlObjectInt {
 
 
     public Vec3f getVelocity() {
-        return getVec3f(AL_VELOCITY);
+        return this.getVec3f(AL_VELOCITY);
     }
 
     public AlSource setVelocity(float x, float y, float z) {
@@ -269,7 +269,7 @@ public class AlSource extends AlObjectInt {
 
 
     public Vec3f getDirection() {
-        return getVec3f(AL_DIRECTION);
+        return this.getVec3f(AL_DIRECTION);
     }
 
     public AlSource setDirection(float x, float y, float z) {
@@ -343,19 +343,19 @@ public class AlSource extends AlObjectInt {
     }
 
     public boolean isPlaying() {
-        return getState() == AlSourceState.PLAYING;
+        return (this.getState() == AlSourceState.PLAYING);
     }
 
     public boolean isPaused() {
-        return getState() == AlSourceState.PAUSED;
+        return (this.getState() == AlSourceState.PAUSED);
     }
 
     public boolean isStopped() {
-        return getState() == AlSourceState.STOPPED;
+        return (this.getState() == AlSourceState.STOPPED);
     }
 
     public boolean isInitial() {
-        return getState() == AlSourceState.INITIAL;
+        return (this.getState() == AlSourceState.INITIAL);
     }
 
 
@@ -639,9 +639,7 @@ public class AlSource extends AlObjectInt {
 
 
     // SOFT_source_start_delay extension.
-    /**
-     * <source>AlExtensions.SOFT_SOURCE_START_DELAY</source>
-     *  */
+
     public AlSource playAtTime(long startTime) {
         SOFTSourceStartDelay.alSourcePlayAtTimeSOFT(ID, startTime);
         return this;
@@ -718,7 +716,6 @@ public class AlSource extends AlObjectInt {
 
     // SOFTDirectChannelsRemix.AL_DROP_UNMATCHED_SOFT  // parameter of Sourcei and Sourceiv for the SOFTDirectChannelsRemix.AL_DIRECT_CHANNELS_SOFT property.
     // SOFTDirectChannelsRemix.AL_REMIX_UNMATCHED_SOFT // parameter of Sourcei and Sourceiv for the SOFTDirectChannelsRemix.AL_DIRECT_CHANNELS_SOFT property.
-
 
 
     public AlSource copy() {

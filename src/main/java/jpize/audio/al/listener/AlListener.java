@@ -10,29 +10,6 @@ import static org.lwjgl.openal.AL11.*;
 
 public class AlListener {
 
-    // alGetListener3f(int paramName, float[] value1, float[] value2, float[] value3)
-    // alGetListener3f(int paramName, FloatBuffer value1, FloatBuffer value2, FloatBuffer value3)
-    // alGetListenerf(int paramName)
-    // alGetListenerf(int paramName, float[] value)
-    // alGetListenerf(int paramName, FloatBuffer value)
-    // alGetListenerfv(int paramName, float[] values)
-    // alGetListenerfv(int paramName, FloatBuffer values)
-    // alGetListeneri(int paramName)
-    // alGetListeneri(int paramName, int[] value)
-    // alGetListeneri(int paramName, IntBuffer value)
-
-    // alListener3f(int paramName, float value1, float value2, float value3)
-    // alListenerf(int paramName, float value)
-    // alListenerfv(int paramName, float[] values)
-    // alListenerfv(int paramName, FloatBuffer values)
-    // alListeneri(int paramName, int values)
-    // alGetListeneriv(int param, int[] values)
-    // alGetListeneriv(int param, IntBuffer values)
-    // alListener3i(int paramName, int value1, int value2, int value3)
-    // alListeneriv(int listener, int[] value)
-    // alListeneriv(int listener, IntBuffer value)
-
-
     public static float getGain() {
         return alGetListenerf(AL_GAIN);
     }
