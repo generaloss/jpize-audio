@@ -39,11 +39,11 @@ public class AudioTest {
             if(s.getSeconds() > 4 && s.getSeconds() < 8 && !paused){
                 paused = true;
                 //music.pause();
-                System.out.println("--===PAUSE===--");
+                //System.out.println("--===PAUSE===--");
             }else if(s.getSeconds() > 8 && paused){
                 paused = false;
                 //music.play();
-                System.out.println("--===RESUME===--");
+                //System.out.println("--===RESUME===--");
             }
         }
 
