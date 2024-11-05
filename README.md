@@ -15,7 +15,7 @@ Provides most OpenAL extensions.
 <dependency>
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.10.3</version>
+    <version>24.11.1</version>
 </dependency>
 ```
 ### Gradle (Kotlin)
@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.generaloss:jpize-audio:24.10.3")
+    implementation("io.github.generaloss:jpize-audio:24.11.1")
 }
 ```
 
