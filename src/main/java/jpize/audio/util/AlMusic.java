@@ -7,44 +7,83 @@ import java.util.function.Supplier;
 
 public class AlMusic extends AlSpeakerStream {
 
-    private final Supplier<AudioInputStream> inputSupplier;
+    private Supplier<AudioInputStream> inputSupplier;
     private AudioInputStream input;
 
-    public AlMusic(Supplier<AudioInputStream> inputSupplier, int buffersNum, int bufferSize) {
+    public AlMusic(int buffersNum, int bufferSize) {
         super(buffersNum, bufferSize);
-        this.inputSupplier = inputSupplier;
-        this.input = inputSupplier.get();
-        super.setup(input.getAlFormat(), input.getSampleRate());
+    }
+
+    public AlMusic() {
+        this(3, 40960);
+    }
+
+    public AlMusic(Supplier<AudioInputStream> inputSupplier, int buffersNum, int bufferSize) {
+        this(buffersNum, bufferSize);
+        this.load(inputSupplier);
     }
 
     public AlMusic(Resource res, int buffersNum, int bufferSize) {
-        this(() -> AudioInputStream.createByFormat(res.extension(), res.inStream()), buffersNum, bufferSize);
+        this(buffersNum, bufferSize);
+        this.load(inputSupplier);
+    }
+
+    public AlMusic(String internalPath, int buffersNum, int bufferSize) {
+        this(buffersNum, bufferSize);
+        this.load(internalPath);
+    }
+
+    public AlMusic(Supplier<AudioInputStream> inputSupplier) {
+        this();
+        this.load(inputSupplier);
     }
 
     public AlMusic(Resource res) {
-        this(res, 3, 40960);
+        this();
+        this.load(res);
     }
 
     public AlMusic(String internalPath) {
-        this(Resource.internal(internalPath));
+        this();
+        this.load(internalPath);
+    }
+
+
+    public AlMusic load(Supplier<AudioInputStream> inputSupplier) {
+        this.inputSupplier = inputSupplier;
+        this.reset();
+        super.setup(input.getAlFormat(), input.getSampleRate());
+        return this;
+    }
+
+    public AlMusic load(Resource res) {
+        return this.load(() -> AudioInputStream.createByFormat(res.extension(), res.inStream()));
+    }
+
+    public AlMusic load(String internalPath) {
+        return this.load(Resource.internal(internalPath));
     }
 
 
     @Override
     protected int read(byte[] buffer) {
-        return input.read(buffer);
+        if(input != null)
+            return input.read(buffer);
+        return -1;
     }
 
     @Override
     protected void reset() {
-        input.close();
+        if(input != null)
+            input.close();
         input = inputSupplier.get();
     }
 
     @Override
     public void dispose() {
         super.dispose();
-        input.close();
+        if(input != null)
+            input.close();
     }
 
 }
