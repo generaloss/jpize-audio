@@ -1,5 +1,6 @@
 package jpize.audio.al.device;
 
+import jpize.audio.al.Alc;
 import jpize.audio.al.context.AlAttributes;
 import jpize.audio.al.context.AlContext;
 import org.lwjgl.openal.AL;
@@ -27,6 +28,14 @@ public class AlDevice extends AlAbstractDevice {
 
     public AlDevice(CharSequence specifier) {
         this(specifier, new AlAttributes());
+    }
+
+    public AlDevice(AlAttributes attributes) {
+        this(Alc.getSystemDeviceSpecifier(), attributes);
+    }
+
+    public AlDevice() {
+        this(new AlAttributes());
     }
 
     public AlContext getContext() {

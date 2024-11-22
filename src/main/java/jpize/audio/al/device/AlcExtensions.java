@@ -1,6 +1,6 @@
 package jpize.audio.al.device;
 
-import jpize.audio.Audio;
+import jpize.audio.AlDevices;
 
 import java.util.Objects;
 
@@ -42,7 +42,7 @@ public enum AlcExtensions {
     }
 
     public boolean isPresent() {
-        return this.isPresent(Objects.requireNonNull(Audio.getCurrentDevice()));
+        return this.isPresent(Objects.requireNonNull(AlDevices.getCurrentDevice()));
     }
 
 
@@ -51,7 +51,7 @@ public enum AlcExtensions {
     }
 
     public static String all() {
-        return all(Objects.requireNonNull(Audio.getCurrentDevice()));
+        return all(Objects.requireNonNull(AlDevices.getCurrentDevice()));
     }
 
 }

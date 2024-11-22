@@ -1,40 +1,19 @@
 # [Audio Module](https://github.com/generaloss/jpize-audio)
 ![logo](logo.svg)
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.generaloss/jpize-audio.svg)](https://mvnrepository.com/artifact/io.github.generaloss/jpize-audio)
+
+---
+
 Allows loading audio files (ogg, mp3, wav) and playing them with OpenAL.
 
 Provides most OpenAL extensions.
 
 ---
 
-## Getting Started
-
-### Maven
-```xml
-<!-- jpize-audio -->
-<dependency>
-    <groupId>io.github.generaloss</groupId>
-    <artifactId>jpize-audio</artifactId>
-    <version>24.11.1</version>
-</dependency>
-```
-### Gradle (Kotlin)
-```kotlin
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("io.github.generaloss:jpize-audio:24.11.1")
-}
-```
-
----
-
 ## Example
 ``` java
-Audio.init();
-Audio.openDevice();
+AlDevices.openDevice();
 
 AlSound sound = new AlSound("/sound.mp3")
     .setGain(0.5)
@@ -44,7 +23,7 @@ AlMusic sound = new AlMusic("/music.mp3")
     .setGain(0.5)
     .play();
 
-Audio.dispose();
+AlDevices.dispose();
 ```
 
 ---

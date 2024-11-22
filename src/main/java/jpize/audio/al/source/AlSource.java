@@ -1,6 +1,6 @@
 package jpize.audio.al.source;
 
-import jpize.audio.Audio;
+import jpize.audio.AlDevices;
 import jpize.audio.al.buffer.AlBuffer;
 import jpize.audio.al.AlObjectInt;
 import jpize.audio.al.fx.AlEffectSlot;
@@ -655,12 +655,12 @@ public class AlSource extends AlObjectInt {
 
 
     public AlSource playDelayedn(long nanos) {
-        final long startTime = (nanos + Objects.requireNonNull(Audio.getCurrentDevice()).getClock());
+        final long startTime = (nanos + Objects.requireNonNull(AlDevices.getCurrentDevice()).getClock());
         return playAtTime(startTime);
     }
 
     public static void playDelayedn(long nanos, int... sources) {
-        final long startTime = (nanos + Objects.requireNonNull(Audio.getCurrentDevice()).getClock());
+        final long startTime = (nanos + Objects.requireNonNull(AlDevices.getCurrentDevice()).getClock());
         playAtTime(startTime, sources);
     }
 

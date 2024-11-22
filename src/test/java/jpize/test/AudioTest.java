@@ -1,6 +1,6 @@
 package jpize.test;
 
-import jpize.audio.Audio;
+import jpize.audio.AlDevices;
 import jpize.audio.al.Al;
 import jpize.audio.al.AlExtensions;
 import jpize.audio.al.Alc;
@@ -12,8 +12,7 @@ import jpize.util.time.TimeUtils;
 public class AudioTest {
 
     public static void main(String[] args) {
-        Audio.init();
-        final AlDevice device1 = Audio.openDevice();
+        final AlDevice device1 = AlDevices.openDevice();
 
         System.out.println("AL Extensions: (" + AlExtensions.all().split(" ").length + ") " + AlExtensions.all());
         System.out.println("AL Ext present: " + AlExtensions.SOFT_SOURCE_START_DELAY.isPresent());
@@ -55,7 +54,7 @@ public class AudioTest {
         TimeUtils.waitFor(() -> !sound.isPlaying());
 
         // music.stop();
-        Audio.dispose();
+        AlDevices.dispose();
     }
 
 }

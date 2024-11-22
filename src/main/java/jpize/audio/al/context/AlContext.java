@@ -1,6 +1,6 @@
 package jpize.audio.al.context;
 
-import jpize.audio.Audio;
+import jpize.audio.AlDevices;
 import jpize.audio.al.device.AlAbstractDevice;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.AlObjectLong;
@@ -45,7 +45,7 @@ public class AlContext extends AlObjectLong implements Disposable {
     }
 
     public AlDevice getDevice() {
-        return Audio.getDevice(getDeviceID());
+        return AlDevices.getDevice(getDeviceID());
     }
 
 

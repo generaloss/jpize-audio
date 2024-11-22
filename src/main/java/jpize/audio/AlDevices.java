@@ -13,15 +13,10 @@ import java.util.*;
 
 import static org.lwjgl.openal.ALC11.*;
 
-public class Audio {
+public class AlDevices {
 
-    private static Map<String, AlDevice> devices;
-    private static Map<String, AlCaptureDevice> captureDevices;
-
-    public static void init() {
-        devices = new HashMap<>();
-        captureDevices = new HashMap<>();
-    }
+    private static final Map<String, AlDevice> devices = new HashMap<>();
+    private static final Map<String, AlCaptureDevice> captureDevices = new HashMap<>();
 
 
     public static AlDevice openDevice(String specifier, AlAttributes attributes) {
@@ -36,8 +31,12 @@ public class Audio {
         return openDevice(specifier, new AlAttributes());
     }
 
+    public static AlDevice openDevice(AlAttributes attributes) {
+        return openDevice(Alc.getSystemDeviceSpecifier(), attributes);
+    }
+
     public static AlDevice openDevice() {
-        return openDevice(Alc.getSystemDeviceSpecifier());
+        return openDevice(new AlAttributes());
     }
 
 

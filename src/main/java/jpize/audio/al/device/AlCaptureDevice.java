@@ -1,5 +1,6 @@
 package jpize.audio.al.device;
 
+import jpize.audio.al.Alc;
 import jpize.audio.al.buffer.AlFormat;
 
 import java.nio.ByteBuffer;
@@ -13,6 +14,10 @@ public class AlCaptureDevice extends AlAbstractDevice {
 
     public AlCaptureDevice(CharSequence deviceSpecifier, int frequency, AlFormat format, int samples) {
         super(alcCaptureOpenDevice(deviceSpecifier, frequency, format.value, samples));
+    }
+
+    public AlCaptureDevice(int frequency, AlFormat format, int samples) {
+        this(Alc.getSystemCaptureDeviceSpecifier(), frequency, format, samples);
     }
 
 
