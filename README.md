@@ -94,7 +94,7 @@ sound.play();
 sound.dispose();
 ```
 
-### Buffer & Source
+### Buffers & Sources
 ``` java
 AlBuffer buffer = new AlBuffer()
     .load("/sound.mp3");
@@ -142,9 +142,14 @@ AleEcho effect = new AleEcho() // or any other effect
 AlEffectSlot effectSlot = new AlEffectSlot()
     .setEffect(effect);
 
+// play
 AlSource source; // or any AlSource inheritor (AlSound, AlMusic, AlSpeaker, ...)
 source.setAuxSendFilter(effectSlot, 0, null);
 source.play();
+
+// free resources
+effect.dispose();
+effectSlot.dispose();
 ```
 
 ### Filters
@@ -157,6 +162,9 @@ AlfHighpass filter = new AlfHighpass() // or any other filter
 AlSource source; // or any AlSource inheritor (AlSound, AlMusic, AlSpeaker, ...)
 source.setDirectFilter(filter);
 source.play();
+
+// free resources
+filter.dispose();
 ```
 
 ### Speaker
