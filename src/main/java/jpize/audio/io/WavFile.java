@@ -23,8 +23,8 @@ public class WavFile {
         this.channels = (short) channels;
     }
 
-    public WavFile(String path, int sampleRate, int channels) {
-        this(new File(path), sampleRate, channels);
+    public WavFile(String filepath, int sampleRate, int channels) {
+        this(new File(filepath), sampleRate, channels);
     }
 
     public WavFile(ExternalResource res, int sampleRate, int channels) {

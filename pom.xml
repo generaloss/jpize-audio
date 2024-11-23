@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.11.3</version>
+    <version>24.11.3.1</version>
     <name>jpize-audio</name>
 
     <description>openal audio library</description>
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.3</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>

@@ -40,7 +40,7 @@ public class AlSourcePool implements Disposable {
     }
 
     public AlSource play(AlBuffer buffer, double gain, double pitch) {
-        final AlSource source = findFreeSource();
+        final AlSource source = this.findFreeSource();
         if(source == null)
             return null;
 
@@ -52,11 +52,11 @@ public class AlSourcePool implements Disposable {
     }
 
     public AlSource play(AlBuffer buffer, double gain) {
-        return play(buffer, gain, 1D);
+        return this.play(buffer, gain, 1D);
     }
 
     public AlSource play(AlBuffer buffer) {
-        return play(buffer, 1D);
+        return this.play(buffer, 1D);
     }
 
     @Override

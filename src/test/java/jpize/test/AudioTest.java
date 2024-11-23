@@ -6,6 +6,7 @@ import jpize.audio.al.AlExtensions;
 import jpize.audio.al.Alc;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.device.AlcExtensions;
+import jpize.audio.al.fx.filters.AlfHighpass;
 import jpize.audio.util.AlMusic;
 import jpize.util.time.TimeUtils;
 
@@ -23,9 +24,10 @@ public class AudioTest {
         System.out.println("Gain limit: " + Al.getGainLimit());
         Al.checkError();
 
-        AlMusic sound = new AlMusic();
-        sound.load("/music.mp3");
-        sound.play();
+        AlMusic music = new AlMusic();
+        music.load("/music.mp3");
+        music.setDirectFilter(new AlfHighpass().setGainLF(0.2F));
+        music.play();
 
         // Stopwatch s = new Stopwatch().start();
         // final AlMusic music = new AlMusic("/music-loop.ogg");
@@ -35,7 +37,7 @@ public class AudioTest {
 
         // boolean paused = false;
         while(!Thread.interrupted()){
-            sound.update();
+            music.update();
             TimeUtils.sleepMillis(200);
 
             // if(s.getSeconds() > 4 && s.getSeconds() < 8 && !paused){
@@ -51,7 +53,7 @@ public class AudioTest {
 
         // final AlSound sound = new AlSound("/music-loop.mp3");
         // sound.setLooping(true).play();
-        TimeUtils.waitFor(() -> !sound.isPlaying());
+        TimeUtils.waitFor(() -> !music.isPlaying());
 
         // music.stop();
         AlDevices.dispose();

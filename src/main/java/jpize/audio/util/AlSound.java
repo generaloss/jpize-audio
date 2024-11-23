@@ -23,8 +23,8 @@ public class AlSound extends AlSource {
         super.setBuffer(buffer);
     }
 
-    public AlSound(String filepath) {
-        this(Resource.internal(filepath));
+    public AlSound(String internalPath) {
+        this(Resource.internal(internalPath));
     }
 
     public AlSound(ByteBuffer data, AlFormat format, int frequency) {
@@ -61,8 +61,8 @@ public class AlSound extends AlSource {
         return this;
     }
 
-    public AlSound load(String path) {
-        buffer.load(path);
+    public AlSound load(String internalPath) {
+        buffer.load(internalPath);
         super.setBuffer(buffer);
         return this;
     }

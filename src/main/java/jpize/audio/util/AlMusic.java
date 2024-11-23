@@ -52,7 +52,8 @@ public class AlMusic extends AlSpeakerStream {
     public AlMusic load(Supplier<AudioInputStream> inputSupplier) {
         this.inputSupplier = inputSupplier;
         this.reset();
-        super.setup(input.getAlFormat(), input.getSampleRate());
+        super.setFormat(input.getAlFormat());
+        super.setSampleRate(input.getSampleRate());
         return this;
     }
 

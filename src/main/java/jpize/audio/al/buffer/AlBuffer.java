@@ -38,8 +38,8 @@ public class AlBuffer extends AlObjectInt {
         return this.load(res.extension(), res.inStream());
     }
 
-    public AlBuffer load(String path) {
-        return this.load(Resource.internal(path));
+    public AlBuffer load(String internalPath) {
+        return this.load(Resource.internal(internalPath));
     }
 
 

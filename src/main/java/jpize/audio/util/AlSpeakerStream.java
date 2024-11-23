@@ -29,15 +29,26 @@ public abstract class AlSpeakerStream extends AlSource {
         this.state = AlSourceState.INITIAL;
     }
 
-    public AlSpeakerStream setup(AlFormat format, int sampleRate) {
+    public AlSpeakerStream(int buffersNum, int bufferSize, AlFormat format, int sampleRate) {
+        this(buffersNum, bufferSize);
+        this.setFormat(format);
+        this.setSampleRate(sampleRate);
+    }
+
+    public AlSpeakerStream setFormat(AlFormat format) {
         this.format = format;
+        return this;
+    }
+
+    public AlSpeakerStream setSampleRate(int sampleRate) {
         this.sampleRate = sampleRate;
         return this;
     }
 
-    abstract int read(byte[] buffer);
 
-    abstract void reset();
+    abstract protected int read(byte[] buffer);
+
+    abstract protected void reset();
 
     @Override
     public AlSourceState getState() {
