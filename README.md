@@ -13,7 +13,7 @@ Provides most OpenAL extensions.
 
 ## Examples
 
-### Simple sound example
+#### Simple sound example
 ``` java
 public static void main(String[] args) {
     AlDevices.openDevice();
@@ -28,7 +28,7 @@ public static void main(String[] args) {
 }
 ```
 
-### Open devices
+#### Open devices
 ``` java
 // device attributes (optional)
 AlAttributes attributes = new AlAttributes()
@@ -56,7 +56,7 @@ AlCaptureDevice device = AlDevices.openCaptureDevice(int frequency, AlFormat for
 AlDevices.dispose();
 ```
 
-### Music
+#### Music
 The AlMusic class does not load the entire file (which can take a long time), 
 it loads the file piece by piece as it plays.
 ``` java
@@ -77,7 +77,7 @@ void loop() {
 music.dispose();
 ```
 
-### Sound
+#### Sound
 The AlSound class loads the file into a buffer and plays it.
 ``` java
 AlSound sound = new AlSound(String internalPath);
@@ -94,7 +94,7 @@ sound.play();
 sound.dispose();
 ```
 
-### Buffers & Sources
+#### Buffers & Sources
 ``` java
 AlBuffer buffer = new AlBuffer()
     .load("/sound.mp3");
@@ -109,7 +109,7 @@ buffer.dispose();
 source.dispose();
 ```
 
-### Sources Pool
+#### Sources Pool
 ``` java
 AlSourcePool pool = new AlSourcePool(int count);
 
@@ -131,7 +131,7 @@ if(source != null) {
 pool.dispose();
 ```
 
-### Effects
+#### Effects
 
 ``` java
 // create echo effect
@@ -152,7 +152,7 @@ effect.dispose();
 effectSlot.dispose();
 ```
 
-### Filters
+#### Filters
 
 ``` java
 // create filter
@@ -167,7 +167,7 @@ source.play();
 filter.dispose();
 ```
 
-### Speaker
+#### Speaker
 ``` java
 AlSpeaker speaker = new AlSpeaker(int buffersNum, AlFormat format, int sampleRate);
 AlSpeaker speaker = new AlSpeaker(int buffersNum);
@@ -183,7 +183,7 @@ speaker.play(byte[] data);
 speaker.dispose();
 ```
 
-### Queued Speaker
+#### Queued Speaker
 ``` java
 AlSpeakerQueued speaker = new AlSpeakerQueued(int buffersNum, int bufferSize, AlFormat format, int sampleRate) { ... }
 AlSpeakerQueued queued = new AlSpeakerQueued(int buffersNum, int bufferSize);
