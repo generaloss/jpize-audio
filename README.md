@@ -134,7 +134,7 @@ pool.dispose();
 #### Effects
 
 ``` java
-// create echo effect
+// create echo effecto
 AleEcho effect = new AleEcho() // or any other effect
     .setDelay(0.207F);
     
