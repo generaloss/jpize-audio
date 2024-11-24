@@ -192,6 +192,10 @@ AlSpeakerQueued queued = new AlSpeakerQueued(int buffersNum, int bufferSize);
 speaker.play();
 speaker.queueData(byte[] data);
 
+void loop() {
+    speaker.update(); // need to be updated in loop
+}
+
 // free resources
 speaker.dispose();
 ```
