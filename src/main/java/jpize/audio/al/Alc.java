@@ -3,11 +3,6 @@ package jpize.audio.al;
 import jpize.audio.al.device.AlAbstractDevice;
 import jpize.util.Utils;
 import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALUtil;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.openal.ALC11.*;
@@ -50,19 +45,6 @@ public class Alc {
 
     public static String getCaptureDeviceSpecifier() {
         return alcGetString(0, ALC_CAPTURE_DEVICE_SPECIFIER);
-    }
-
-    public static List<String> getCaptureDeviceSpecifiers() {
-        final List<String> list = ALUtil.getStringList(0, ALC_CAPTURE_DEVICE_SPECIFIER);
-        return (list == null) ? Collections.emptyList() : list;
-    }
-
-    public static List<String> getDeviceSpecifiers() {
-        final List<String> list = new ArrayList<>();
-        for(String specifier: getCaptureDeviceSpecifiers())
-            if(specifier.startsWith("Monitor of "))
-                list.add(specifier.substring(11));
-        return list;
     }
 
     public static String getSystemCaptureDeviceSpecifier() {

@@ -27,6 +27,7 @@ public enum AlOutputMode {
         this.value = value;
     }
 
+
     private static final Map<Integer, AlOutputMode> BY_VALUE = Utils.make(new HashMap<>(), map -> {
         for(AlOutputMode e: values())
             map.put(e.value, e);

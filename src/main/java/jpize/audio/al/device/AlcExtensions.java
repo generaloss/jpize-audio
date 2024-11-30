@@ -47,7 +47,7 @@ public enum AlcExtensions {
 
 
     public static String all(AlAbstractDevice device) {
-        return device.getExtensions();
+        return device.getAttributeExtensions();
     }
 
     public static String all() {

@@ -8,6 +8,7 @@ import jpize.audio.al.device.AlAbstractDevice;
 import jpize.audio.al.device.AlCaptureDevice;
 import jpize.audio.al.device.AlDevice;
 import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALUtil;
 
 import java.util.*;
 
@@ -55,22 +56,14 @@ public class AlDevices {
 
     public static AlDevice getDevice(String specifier) {
         if(!devices.containsKey(specifier))
-            openDevice(specifier);
+            throw new IllegalArgumentException("AlDevice '" + specifier + "' does not exist.");
         return devices.get(specifier);
     }
 
-    public static AlDevice getDevice() {
-        return getDevice(Alc.getSystemDeviceSpecifier());
-    }
-
-    public static AlCaptureDevice getCaptureDevice(String specifier, int frequency, AlFormat format, int samples) {
+    public static AlCaptureDevice getCaptureDevice(String specifier) {
         if(!captureDevices.containsKey(specifier))
-            openCaptureDevice(specifier, frequency, format, samples);
+            throw new IllegalArgumentException("AlDevice '" + specifier + "' does not exist.");
         return captureDevices.get(specifier);
-    }
-
-    public static AlCaptureDevice getCaptureDevice(int frequency, AlFormat format, int samples) {
-        return getCaptureDevice(Alc.getCaptureDeviceSpecifier(), frequency, format, samples);
     }
 
 
@@ -107,6 +100,28 @@ public class AlDevices {
                 return device.getContext();
 
         return null;
+    }
+
+
+    public static List<String> getAllDeviceSpecifiers() {
+        final List<String> list = ALUtil.getStringList(0, ALC_CAPTURE_DEVICE_SPECIFIER);
+        return (list == null) ? Collections.emptyList() : list;
+    }
+
+    public static List<String> getCaptureDeviceSpecifiers() {
+        final List<String> list = new ArrayList<>();
+        for(String specifier: getAllDeviceSpecifiers())
+            if(!specifier.startsWith("Monitor of "))
+                list.add(specifier);
+        return list;
+    }
+
+    public static List<String> getDeviceSpecifiers() {
+        final List<String> list = new ArrayList<>();
+        for(String specifier: getAllDeviceSpecifiers())
+            if(specifier.startsWith("Monitor of "))
+                list.add(specifier.substring(11));
+        return list;
     }
 
 

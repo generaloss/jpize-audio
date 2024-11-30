@@ -1,5 +1,10 @@
 package jpize.audio.al.context;
 
+import jpize.util.Utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.lwjgl.openal.SOFTLoopback.*;
 
 // SOFT_loopback extension.
@@ -17,6 +22,16 @@ public enum AlFormatType {
 
     AlFormatType(int value) {
         this.value = value;
+    }
+
+
+    private static final Map<Integer, AlFormatType> BY_VALUE = Utils.make(new HashMap<>(), map -> {
+        for(AlFormatType e: values())
+            map.put(e.value, e);
+    });
+
+    public static AlFormatType byValue(int value) {
+        return BY_VALUE.get(value);
     }
 
 }

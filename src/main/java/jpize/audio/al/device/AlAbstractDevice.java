@@ -3,6 +3,8 @@ package jpize.audio.al.device;
 import jpize.audio.al.AlcError;
 import jpize.audio.al.AlObjectLong;
 import jpize.audio.al.context.AlAttributes;
+import jpize.audio.al.context.AlFormatChannels;
+import jpize.audio.al.context.AlFormatType;
 import jpize.audio.al.context.AlOutputMode;
 import org.lwjgl.openal.*;
 
@@ -32,31 +34,75 @@ public abstract class AlAbstractDevice extends AlObjectLong {
         alcGetIntegerv(ID, attribute.value, dest);
     }
 
-    public String getSpecifier() {
-        return getAttribute(AlStrAttr.DEVICE_SPECIFIER);
+    public String getAttributeDefaultSpecifier() {
+        return this.getAttribute(AlStrAttr.DEFAULT_DEVICE_SPECIFIER);
     }
 
-    public String getCaptureSpecifier() {
-        return getAttribute(AlStrAttr.CAPTURE_DEVICE_SPECIFIER);
+    public String getAttributeSpecifier() {
+        return this.getAttribute(AlStrAttr.DEVICE_SPECIFIER);
     }
 
-
-    public String getExtensions() {
-        return getAttribute(AlStrAttr.EXTENSIONS);
+    public String getAttributeExtensions() {
+        return this.getAttribute(AlStrAttr.EXTENSIONS);
     }
+
+    public String getAttributeCaptureSpecifier() {
+        return this.getAttribute(AlStrAttr.CAPTURE_DEVICE_SPECIFIER);
+    }
+
+    public String getAttributeCaptureDefaultSpecifier() {
+        return this.getAttribute(AlStrAttr.CAPTURE_DEFAULT_DEVICE_SPECIFIER);
+    }
+
 
     public boolean isExtensionPresent(CharSequence extension) {
         return alcIsExtensionPresent(ID, extension);
     }
 
 
-    public String getName() {
+    public String getSpecifier() {
         return alcGetString(ID, ALC_ALL_DEVICES_SPECIFIER);
     }
 
 
     public int getProperty(AlProperty property) {
         return alcGetInteger(ID, property.value);
+    }
+
+    public int getPropertyFrequency() {
+        return this.getProperty(AlProperty.FREQUENCY);
+    }
+
+    public int getPropertyRefresh() {
+        return this.getProperty(AlProperty.REFRESH);
+    }
+
+    public boolean getPropertySync() {
+        return this.getProperty(AlProperty.SYNC) == 1;
+    }
+
+    public int getPropertyMonoSources() {
+        return this.getProperty(AlProperty.MONO_SOURCES);
+    }
+
+    public int getPropertyStereoSources() {
+        return this.getProperty(AlProperty.STEREO_SOURCES);
+    }
+
+    public boolean getPropertyOutputLimiter() {
+        return this.getProperty(AlProperty.OUTPUT_LIMITER_SOFT) == 1;
+    }
+
+    public AlOutputMode getPropertyOutputMode() {
+        return AlOutputMode.byValue(this.getProperty(AlProperty.OUTPUT_MODE_SOFT));
+    }
+
+    public AlFormatChannels getPropertyFormatChannels() {
+        return AlFormatChannels.byValue(this.getProperty(AlProperty.FORMAT_CHANNELS_SOFT));
+    }
+
+    public AlFormatType getPropertyFormatType() {
+        return AlFormatType.byValue(this.getProperty(AlProperty.FORMAT_TYPE_SOFT));
     }
 
 
@@ -184,6 +230,12 @@ public abstract class AlAbstractDevice extends AlObjectLong {
 
     public String getHrtfSpecifier(int index) {
         return SOFTHRTF.alcGetStringiSOFT(ID, SOFTHRTF.ALC_HRTF_SPECIFIER_SOFT, index);
+    }
+
+
+    @Override
+    public String toString() {
+        return this.getSpecifier();
     }
 
 }

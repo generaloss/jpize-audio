@@ -42,6 +42,10 @@ public class AlDevice extends AlAbstractDevice {
         return context;
     }
 
+    public void makeContextCurrent() {
+        context.makeCurrent();
+    }
+
     @Override
     public void dispose() {
         context.dispose();

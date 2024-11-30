@@ -56,6 +56,22 @@ AlCaptureDevice device = AlDevices.openCaptureDevice(int frequency, AlFormat for
 AlDevices.dispose();
 ```
 
+``` java
+// open all devices
+for(String specifier: AlDevices.getDeviceSpecifiers()){
+    AlDevices.openDevice(specifier);
+    System.out.println("Opened device: " + specifier);
+}
+// open all capture devices
+for(String specifier: AlDevices.getCaptureDeviceSpecifiers()){
+    AlDevices.openCaptureDevice(specifier, 44100, AlFormat.MONO16, 128);
+    System.out.println("Opened capture device: " + specifier);
+}
+// make current
+AlDevices.getDevice("Your Device Specifier").makeContextCurrent();
+System.out.println(AlDevices.getCurrentDevice()); // "Your Device Specifier"
+```
+
 #### Music
 The AlMusic class does not load the entire file (which can take a long time), 
 it loads the file piece by piece as it plays.
