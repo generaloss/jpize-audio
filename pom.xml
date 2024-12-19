@@ -4,11 +4,11 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.12.5.01</version>
+    <version>24.12.6</version>
     <name>jpize-audio</name>
 
     <description>openal audio library</description>
-    <url>https://github.com/generaloss/jpize-engine</url>
+    <url>https://github.com/generaloss/jpize-audio</url>
 
     <scm>
         <connection>scm:git:git://github.com/generaloss/jpize-audio.git</connection>
@@ -120,7 +120,7 @@
         <dependency>
             <groupId>io.github.generaloss</groupId>
             <artifactId>jpize-utils</artifactId>
-            <version>24.12.5</version>
+            <version>24.12.6</version>
         </dependency>
         <!-- lwjgl-openal -->
         <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl</artifactId></dependency>
