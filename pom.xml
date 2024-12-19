@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.12.5</version>
+    <version>24.12.5.01</version>
     <name>jpize-audio</name>
 
     <description>openal audio library</description>
@@ -18,7 +18,8 @@
 
     <developers>
         <developer>
-            <name>generaloss</name>
+            <id>generaloss</id>
+            <name>Pavel Vladimirovich</name>
             <email>generaloss@proton.me</email>
         </developer>
     </developers>
@@ -99,7 +100,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <lwjgl.version>3.3.4</lwjgl.version>
+        <lwjgl.version>3.3.5</lwjgl.version>
     </properties>
 
     <dependencyManagement>
