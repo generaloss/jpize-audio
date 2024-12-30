@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>24.12.6.0302</version>
+    <version>24.12.7</version>
     <name>jpize-audio</name>
 
     <description>openal audio library</description>
@@ -120,7 +120,7 @@
         <dependency>
             <groupId>io.github.generaloss</groupId>
             <artifactId>jpize-utils</artifactId>
-            <version>24.12.6.03</version>
+            <version>24.12.7</version>
             <scope>provided</scope>
         </dependency>
         <!-- lwjgl-openal -->
