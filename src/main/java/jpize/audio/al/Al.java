@@ -151,7 +151,7 @@ public class Al {
                     disconnectedCallback.invoke();
                 }
             }
-        }, null);
+        }, 0);
     }
 
     public static void setEventControl(boolean enable, AlEventType... types) {
