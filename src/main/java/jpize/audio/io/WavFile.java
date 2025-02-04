@@ -1,6 +1,6 @@
 package jpize.audio.io;
 
-import jpize.util.res.ExternalResource;
+import jpize.util.res.FileResource;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -27,7 +27,7 @@ public class WavFile {
         this(new File(filepath), sampleRate, channels);
     }
 
-    public WavFile(ExternalResource res, int sampleRate, int channels) {
+    public WavFile(FileResource res, int sampleRate, int channels) {
         this(res.file(), sampleRate, channels);
     }
 

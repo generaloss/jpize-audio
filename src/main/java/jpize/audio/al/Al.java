@@ -125,6 +125,7 @@ public class Al {
     public static void setEventCallbackNull() {
         SOFTEvents.nalEventCallbackSOFT(0L, 0L);
     }
+
     public static void setEventCallback(AlSourceStateChangedCallback stateChangedCallback, AlBufferCompletedCallback bufferCompletedCallback, AlDisconnectedCallback disconnectedCallback) {
         SOFTEvents.alEventCallbackSOFT((int alEventType, int uint1, int uint2, int size, long charsPointer, long voidPointer) -> {
             final AlEventType type = AlEventType.byValue(alEventType);
@@ -151,7 +152,7 @@ public class Al {
                     disconnectedCallback.invoke();
                 }
             }
-        }, null);
+        }, 0L);
     }
 
     public static void setEventControl(boolean enable, AlEventType... types) {
