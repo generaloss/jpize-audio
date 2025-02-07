@@ -202,7 +202,7 @@ speaker.dispose();
 #### Queued Speaker
 ``` java
 AlSpeakerQueued speaker = new AlSpeakerQueued(int buffersNum, int bufferSize, AlFormat format, int sampleRate) { ... }
-AlSpeakerQueued queued = new AlSpeakerQueued(int buffersNum, int bufferSize);
+AlSpeakerQueued speaker = new AlSpeakerQueued(int buffersNum, int bufferSize);
 
 // queue samples to play
 speaker.play();
