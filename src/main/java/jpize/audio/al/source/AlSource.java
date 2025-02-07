@@ -246,7 +246,7 @@ public class AlSource extends AlObjectInt {
     }
 
     public AlSource setPan(double pan) {
-        return this.setPosition(Mathc.cos((pan - 1) * Maths.halfPI), 0, Mathc.sin((pan + 1) * Maths.halfPI));
+        return this.setPosition(Mathc.cos((pan - 1D) * Maths.HALF_PI), 0F, Mathc.sin((pan + 1D) * Maths.HALF_PI));
     }
 
 
@@ -669,11 +669,11 @@ public class AlSource extends AlObjectInt {
     }
 
     public AlSource playDelayedm(long millis) {
-        return playDelayedn(millis * Maths.nanosInMsi);
+        return playDelayedn(millis * Maths.NANOSi);
     }
 
     public static void playDelayedm(long millis, int... sources) {
-        playDelayedn(millis * Maths.nanosInMsi, sources);
+        playDelayedn(millis * Maths.NANOS_IN_MSi, sources);
     }
 
     public static void playDelayedm(long millis, AlSource... sources) {
@@ -681,11 +681,11 @@ public class AlSource extends AlObjectInt {
     }
 
     public AlSource playDelayed(double seconds) {
-        return playDelayedm((int) (seconds * Maths.msInSeci));
+        return playDelayedm((int) (seconds * Maths.MSi));
     }
 
     public static void playDelayed(double seconds, int... sources) {
-        playDelayedm((int) (seconds * Maths.msInSeci), sources);
+        playDelayedm((int) (seconds * Maths.MSi), sources);
     }
 
     public static void playDelayed(double seconds, AlSource... sources) {
