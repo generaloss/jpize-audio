@@ -669,7 +669,7 @@ public class AlSource extends AlObjectInt {
     }
 
     public AlSource playDelayedm(long millis) {
-        return playDelayedn(millis * Maths.NANOSi);
+        return playDelayedn(millis * Maths.NANOS_IN_SECi);
     }
 
     public static void playDelayedm(long millis, int... sources) {
@@ -681,11 +681,11 @@ public class AlSource extends AlObjectInt {
     }
 
     public AlSource playDelayed(double seconds) {
-        return playDelayedm((int) (seconds * Maths.MSi));
+        return playDelayedm((int) (seconds * Maths.MILLIS_IN_SECi));
     }
 
     public static void playDelayed(double seconds, int... sources) {
-        playDelayedm((int) (seconds * Maths.MSi), sources);
+        playDelayedm((int) (seconds * Maths.MILLIS_IN_SECi), sources);
     }
 
     public static void playDelayed(double seconds, AlSource... sources) {
