@@ -9,6 +9,8 @@ Allows loading audio files (ogg, mp3, wav) and playing them with OpenAL.
 
 Provides most OpenAL extensions.
 
+Java version: 17 +
+
 ---
 
 ## Examples
