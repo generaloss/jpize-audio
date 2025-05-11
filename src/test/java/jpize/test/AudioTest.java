@@ -5,7 +5,6 @@ import jpize.audio.al.Al;
 import jpize.audio.al.AlExtensions;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.device.AlcExtensions;
-import jpize.audio.al.fx.filters.AlfHighpass;
 import jpize.audio.util.AlMusic;
 import jpize.util.time.TimeUtils;
 
@@ -25,8 +24,9 @@ public class AudioTest {
         Al.checkError();
 
         AlMusic music = new AlMusic();
-        music.load("/music.mp3");
-        music.setDirectFilter(new AlfHighpass().setGainLF(0.2F));
+        music.setLooping(true);
+        music.load("/music-loop.ogg");
+        // music.setDirectFilter(new AlfHighpass().setGainLF(0.2F));
         music.play();
 
         // Stopwatch s = new Stopwatch().start();
