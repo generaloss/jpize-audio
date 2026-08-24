@@ -1,6 +1,6 @@
 package jpize.audio.io;
 
-import jpize.util.res.FileResource;
+import generaloss.resourceflow.resource.FileResource;
 
 import java.io.DataOutputStream;
 import java.io.File;

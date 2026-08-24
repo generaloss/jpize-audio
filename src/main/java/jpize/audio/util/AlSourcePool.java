@@ -1,8 +1,8 @@
 package jpize.audio.util;
 
+import generaloss.resourceflow.Disposable;
 import jpize.audio.al.buffer.AlBuffer;
 import jpize.audio.al.source.AlSource;
-import jpize.util.Disposable;
 
 public class AlSourcePool implements Disposable {
 

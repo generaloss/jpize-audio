@@ -1,6 +1,6 @@
 package jpize.audio.al;
 
-import jpize.util.Disposable;
+import generaloss.resourceflow.Disposable;
 
 public abstract class AlObjectLong implements Disposable {
 

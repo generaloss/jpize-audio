@@ -1,10 +1,10 @@
 package jpize.audio.al.context;
 
+import generaloss.resourceflow.Disposable;
 import jpize.audio.AlDevices;
 import jpize.audio.al.device.AlAbstractDevice;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.AlObjectLong;
-import jpize.util.Disposable;
 import org.lwjgl.openal.*;
 
 import static org.lwjgl.openal.ALC11.*;

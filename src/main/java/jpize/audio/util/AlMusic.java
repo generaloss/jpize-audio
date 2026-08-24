@@ -1,7 +1,7 @@
 package jpize.audio.util;
 
+import generaloss.resourceflow.resource.Resource;
 import jpize.audio.io.*;
-import jpize.util.res.Resource;
 
 import java.util.function.Supplier;
 

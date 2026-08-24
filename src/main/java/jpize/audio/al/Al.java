@@ -6,7 +6,6 @@ import jpize.audio.al.callback.AlDisconnectedCallback;
 import jpize.audio.al.callback.AlSourceStateChangedCallback;
 import jpize.audio.al.callback.AlEventType;
 import jpize.audio.al.source.AlSourceState;
-import jpize.util.Utils;
 import org.lwjgl.openal.*;
 import org.lwjgl.system.MemoryUtil;
 
@@ -25,7 +24,7 @@ public class Al {
         final AlError error = getError();
         if(error.noErrors())
             return false;
-        System.err.println("[AL Error]: " + error + ". Check: " + Utils.getStackTrace(4));
+        System.err.println("[AL Error]: " + error); // + ". Check: " + Utils.getStackTrace(4));
         return true;
     }
 

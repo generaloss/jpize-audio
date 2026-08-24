@@ -1,11 +1,11 @@
 package jpize.audio.util;
 
+import generaloss.resourceflow.resource.Resource;
 import jpize.audio.al.buffer.AlBuffer;
 import jpize.audio.al.buffer.AlFormat;
 import jpize.audio.al.buffer.UnsupportedAlFormatException;
 import jpize.audio.al.source.AlSource;
 import jpize.audio.io.AudioInputStream;
-import jpize.util.res.Resource;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;

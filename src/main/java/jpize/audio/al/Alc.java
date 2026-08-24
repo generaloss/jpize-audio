@@ -1,7 +1,6 @@
 package jpize.audio.al;
 
 import jpize.audio.al.device.AlAbstractDevice;
-import jpize.util.Utils;
 import org.lwjgl.openal.ALC11;
 
 import static org.lwjgl.openal.ALC10.*;
@@ -25,7 +24,7 @@ public class Alc {
         final AlcError error = getError(device);
         if(error.noErrors())
             return false;
-        System.err.println("[ALC]: " + error + ". Check error at: " + Utils.getStackTrace(4));
+        System.err.println("[ALC]: " + error); //! + ". checkError() at: " + Utils.getStackTrace(4));
         return true;
     }
 

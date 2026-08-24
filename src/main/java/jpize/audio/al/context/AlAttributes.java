@@ -1,7 +1,7 @@
 package jpize.audio.al.context;
 
+import generaloss.rawlist.IntList;
 import jpize.audio.al.device.AlProperty;
-import jpize.util.array.IntList;
 
 public class AlAttributes {
 

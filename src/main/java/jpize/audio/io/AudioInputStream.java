@@ -1,6 +1,6 @@
 package jpize.audio.io;
 
-import jpize.util.Utils;
+import generaloss.resourceflow.ResUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -38,7 +38,7 @@ public abstract class AudioInputStream extends AudioData implements Closeable {
 
     @Override
     public void close() {
-        Utils.close(in);
+        ResUtils.close(in);
     }
 
 

@@ -1,6 +1,6 @@
 package jpize.audio.al.listener;
 
-import jpize.util.math.vector.Vec3f;
+import generaloss.spatialmath.vector.Vec3f;
 import org.lwjgl.openal.EXTEfx;
 import org.lwjgl.system.MemoryUtil;
 

@@ -1,7 +1,5 @@
 package jpize.audio.al.buffer;
 
-import jpize.util.Utils;
-
 import javax.sound.sampled.AudioFormat;
 
 import java.util.HashMap;
@@ -186,10 +184,10 @@ public enum AlFormat {
     }
 
 
-    private static final Map<Integer, AlFormat> BY_VALUE = Utils.make(new HashMap<>(), map -> {
+    private static final Map<Integer, AlFormat> BY_VALUE = new HashMap<>() {{
         for(AlFormat e: values())
-            map.put(e.value, e);
-    });
+            super.put(e.value, e);
+    }};
 
     public static AlFormat byValue(int value) {
         return BY_VALUE.get(value);

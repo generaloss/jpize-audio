@@ -1,14 +1,14 @@
 package jpize.audio.al.source;
 
+import generaloss.chronokit.TimeUtils;
+import generaloss.spatialmath.Mathc;
+import generaloss.spatialmath.Maths;
+import generaloss.spatialmath.vector.Vec3f;
 import jpize.audio.AlDevices;
 import jpize.audio.al.buffer.AlBuffer;
 import jpize.audio.al.AlObjectInt;
 import jpize.audio.al.fx.AlEffectSlot;
 import jpize.audio.al.fx.AlFilter;
-import jpize.util.math.Mathc;
-import jpize.util.math.Maths;
-import jpize.util.math.vector.Vec3f;
-import jpize.util.time.TimeUtils;
 import org.lwjgl.openal.*;
 import org.lwjgl.system.MemoryUtil;
 

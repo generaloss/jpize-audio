@@ -1,7 +1,5 @@
 package jpize.audio.al.fx;
 
-import jpize.util.Utils;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,10 +29,10 @@ public enum AlEffectType {
     }
 
 
-    private static final Map<Integer, AlEffectType> BY_VALUE = Utils.make(new HashMap<>(), map -> {
+    private static final Map<Integer, AlEffectType> BY_VALUE = new HashMap<>() {{
         for(AlEffectType e: values())
-            map.put(e.value, e);
-    });
+            super.put(e.value, e);
+    }};
 
     public static AlEffectType byValue(int value) {
         return BY_VALUE.get(value);

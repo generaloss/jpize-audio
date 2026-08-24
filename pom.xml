@@ -4,7 +4,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>jpize-audio</artifactId>
-    <version>25.5.1-SNAPHOT-1</version>
+    <version>26.8.1</version>
     <name>jpize-audio</name>
 
     <description>OpenAL Audio Library</description>
@@ -15,7 +15,7 @@
         <maven.compiler.target>14</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <lwjgl.version>3.3.6</lwjgl.version>
+        <lwjgl.version>3.4.3</lwjgl.version>
     </properties>
 
     <dependencyManagement>
@@ -31,12 +31,26 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- jpize-utils -->
+        <!-- utils -->
         <dependency>
             <groupId>io.github.generaloss</groupId>
-            <artifactId>jpize-utils</artifactId>
-            <version>25.5.1</version>
-            <scope>provided</scope>
+            <artifactId>resource-flow</artifactId>
+            <version>26.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.generaloss</groupId>
+            <artifactId>raw-list</artifactId>
+            <version>25.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.generaloss</groupId>
+            <artifactId>spatial-math</artifactId>
+            <version>25.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.generaloss</groupId>
+            <artifactId>chrono-kit</artifactId>
+            <version>25.9.1</version>
         </dependency>
         <!-- lwjgl-openal -->
         <dependency><groupId>org.lwjgl</groupId><artifactId>lwjgl</artifactId></dependency>
@@ -133,12 +147,11 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.3.0</version>
+                <version>0.8.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <deploymentName>jpize-audio:${version}</deploymentName>
                     <publishingServerId>central</publishingServerId>
-                    <tokenAuth>true</tokenAuth>
                 </configuration>
             </plugin>
 

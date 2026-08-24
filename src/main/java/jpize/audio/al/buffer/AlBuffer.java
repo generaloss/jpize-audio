@@ -1,8 +1,8 @@
 package jpize.audio.al.buffer;
 
+import generaloss.resourceflow.resource.Resource;
 import jpize.audio.al.AlObjectInt;
 import jpize.audio.io.AudioInputStream;
-import jpize.util.res.Resource;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.openal.*;
 

@@ -1,7 +1,5 @@
 package jpize.audio.al.context;
 
-import jpize.util.Utils;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,10 +26,10 @@ public enum AlOutputMode {
     }
 
 
-    private static final Map<Integer, AlOutputMode> BY_VALUE = Utils.make(new HashMap<>(), map -> {
+    private static final Map<Integer, AlOutputMode> BY_VALUE = new HashMap<>() {{
         for(AlOutputMode e: values())
-            map.put(e.value, e);
-    });
+            super.put(e.value, e);
+    }};
 
     public static AlOutputMode byValue(int value) {
         return BY_VALUE.get(value);

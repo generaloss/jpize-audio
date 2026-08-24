@@ -1,12 +1,12 @@
 package jpize.test;
 
+import generaloss.chronokit.TimeUtils;
 import jpize.audio.AlDevices;
 import jpize.audio.al.Al;
 import jpize.audio.al.AlExtensions;
 import jpize.audio.al.device.AlDevice;
 import jpize.audio.al.device.AlcExtensions;
 import jpize.audio.util.AlMusic;
-import jpize.util.time.TimeUtils;
 
 public class AudioTest {
 

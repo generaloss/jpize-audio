@@ -1,6 +1,6 @@
 package jpize.audio.util;
 
-import jpize.util.Disposable;
+import generaloss.resourceflow.Disposable;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
